@@ -26,6 +26,7 @@ class MainViewModel constructor(private val repository: MainRepository)  : ViewM
         paramsMap["image_type"] = "photo"
         paramsMap["page"] = page.toString()
         paramsMap["category"] = category
+        paramsMap["orientation"] = "horizontal"
 
         val response = repository.getAllPictures(paramsMap)
         response.enqueue(object : Callback<ImagesModel> {

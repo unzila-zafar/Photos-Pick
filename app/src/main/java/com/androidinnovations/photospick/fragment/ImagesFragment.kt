@@ -1,5 +1,6 @@
 package com.androidinnovations.photosview.fragment
 
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -7,17 +8,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
+import androidx.appcompat.widget.PopupMenu
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.androidinnovations.photosview.ImagesLargeViewActivity
 import com.androidinnovations.photosview.InitApp
+import com.androidinnovations.photosview.MainActivity
 import com.androidinnovations.photosview.R
 import com.androidinnovations.photosview.databinding.FragmentImagesBinding
 import com.androidinnovations.photosview.model.ImagesModel
 import com.androidinnovations.photosview.util.GridSpacingItemDecoration
 import com.androidinnovations.photosview.util.Util
-import com.androidinnovations.photosview.util.Util.Companion.openLargeScreenView
 import com.androidinnovations.photosview.util.Util.Companion.showProgressDialog
 import com.androidinnovations.photosview.viewmodel.MainViewModel
 import com.google.android.gms.ads.AdRequest
@@ -36,6 +39,8 @@ class ImagesFragment : Fragment() {
     private var page: Int = 1
     private var mInterstitialAd: InterstitialAd? = null
     var selectedCategory: String? = null
+    var fullscreenAdShowing = false
+    var running = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,6 +57,8 @@ class ImagesFragment : Fragment() {
         selectedCategory = requireArguments()!!.get("category").toString()
 
         loadInterstetialAds()
+
+        (activity as MainActivity).changeTopBarText(selectedCategory!!.split(" ").map { it.capitalize() }.joinToString(" "))
 
         page = 1
         initRecycler()
@@ -100,19 +107,23 @@ class ImagesFragment : Fragment() {
         imagesAdapter.setOnClickListener(object : GenericAdapter.OnItemClickListener {
 
             override fun onClick(view: View, position: Int) {
-                if (mInterstitialAd != null) {
+                if (running && mInterstitialAd != null) {
                     mInterstitialAd?.show(requireActivity())
                 } else {
                     Log.d("TAG", "The interstitial ad wasn't ready yet.")
                 }
 
-                val filePaths = java.util.ArrayList<String>()
-                filePaths.add(imagesAdapter.get(position)!!.largeImageURL)
-                openLargeScreenView(requireContext(),null, filePaths)
+               // val filePaths = java.util.ArrayList<String>()
+               // filePaths.add(imagesAdapter.get(position)!!.largeImageURL)
+                var intent = Intent(requireContext(), ImagesLargeViewActivity::class.java)
+                intent.putExtra("url", imagesAdapter.get(position)!!.largeImageURL)
+                startActivity(intent)
+
+              //  openLargeScreenView(requireContext(),null, filePaths)
             }
 
             override fun onMenuClick(view: View, position: Int) {
-                TODO("Not yet implemented")
+               // showPopupMenu(view)
             }
 
         })
@@ -122,7 +133,7 @@ class ImagesFragment : Fragment() {
         viewOfLayout!!.imagesListing?.addItemDecoration(
             GridSpacingItemDecoration(
                 2,
-                resources.getDimension(com.intuit.sdp.R.dimen._10sdp).roundToInt(),
+                0,
                 true
             )
         )
@@ -155,6 +166,26 @@ class ImagesFragment : Fragment() {
         })
     }
 
+    fun showPopupMenu(view: View) {
+        PopupMenu(view.context, view).apply {
+            menuInflater.inflate(R.menu.image_menu, menu)
+            setOnMenuItemClickListener { item ->
+                when(item.title)
+                {
+                    "Download" ->
+                    {
+
+                    }
+                    "set_wallpaper" ->
+                    {
+
+                    }
+                }
+                true
+            }
+        }.show()
+    }
+
 
     fun getLastVisibleItem(lastVisibleItemPositions: IntArray): Int {
         var maxSize = 0
@@ -168,9 +199,19 @@ class ImagesFragment : Fragment() {
         return maxSize
     }
 
+    override fun onPause() {
+        super.onPause()
+
+    }
+
+    override fun onStart() {
+        super.onStart()
+        running = true
+    }
 
     override fun onStop() {
         super.onStop()
+        running = false
         mInterstitialAd = null
     }
 
@@ -178,26 +219,31 @@ class ImagesFragment : Fragment() {
         var adRequest = AdRequest.Builder().build()
         InterstitialAd.load(
             requireContext(),
-            "ca-app-pub-3940256099942544/1033173712",
+            requireContext().getString(R.string.interstetialAd_key),
             adRequest,
             object : InterstitialAdLoadCallback() {
                 override fun onAdFailedToLoad(adError: LoadAdError) {
                     Log.d("interstetialAds", adError?.toString())
                     mInterstitialAd = null
+                    fullscreenAdShowing = false
+
                 }
 
                 override fun onAdLoaded(interstitialAd: InterstitialAd) {
                     Log.d("interstetialAds", "Ad was loaded.")
                     mInterstitialAd = interstitialAd
+                    fullscreenAdShowing = true
                 }
+
             })
+
 
 
         mInterstitialAd?.fullScreenContentCallback = object : FullScreenContentCallback() {
             override fun onAdClicked() {
                 // Called when a click is recorded for an ad.
 
-
+                fullscreenAdShowing = false
                 Log.d("Ads", "Ad was clicked.")
             }
 
@@ -220,6 +266,7 @@ class ImagesFragment : Fragment() {
 
             }
         }
+
     }
 
 

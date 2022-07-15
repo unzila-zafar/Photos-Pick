@@ -7,11 +7,16 @@ import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
 import android.net.ConnectivityManager
 import android.net.Uri
+import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.view.Window
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.TextView
+import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.databinding.adapters.ImageViewBindingAdapter.setImageDrawable
 import com.androidinnovations.photosview.R
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -150,6 +155,21 @@ class Util {
         fun dismissProgressDialog() {
             if (dialog?.isShowing == true)
                 dialog?.dismiss()
+        }
+
+        fun showToast(context: Context?, info: String, icon: Int? = null) {
+            val view = LayoutInflater.from(context).inflate(R.layout.toast_view, null, false)
+//    Toast.makeText(context, info, Toast.LENGTH_SHORT).show()
+            view.findViewById<TextView>(R.id.toast_text).setText(info)
+            if (icon != null) {
+                view.findViewById<ImageView>(R.id.toast_icon).apply {
+                    setImageDrawable(ContextCompat.getDrawable(context!!, icon))
+                    visibility = View.VISIBLE
+                }
+            }
+            val toast = Toast(context)
+            toast.view = view
+            toast.show()
         }
 
     }
