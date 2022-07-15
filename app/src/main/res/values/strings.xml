@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">MehndiDesigns</string>
+    <string name="app_name">Photo Pick</string>
+    <string name="admob_key">ca-app-pub-5200009588101519~4272875553</string>
+    <string name="bannerAd_key">ca-app-pub-5200009588101519/5999507300</string>
+    <string name="interstetialAd_key">ca-app-pub-5200009588101519/6929445594</string>
+    <string name="nativeAd_key">ca-app-pub-5200009588101519/2990200583</string>
 </resources>
