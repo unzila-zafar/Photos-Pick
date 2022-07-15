@@ -1,8 +1,13 @@
 package com.androidinnovations.photosview
 
+import android.content.Intent
+import android.graphics.Color
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import android.view.Window
+import android.view.WindowManager
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -23,6 +28,7 @@ import com.google.android.gms.ads.nativead.NativeAd
 import com.google.android.gms.ads.nativead.NativeAdOptions
 import com.ozoneddigital.adamJee.generics.GenericAdapter
 
+
 //unzila
 class MainActivity : AppCompatActivity() {
 
@@ -36,6 +42,12 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         getSupportActionBar()?.hide()
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            val window: Window = window
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+            window.setStatusBarColor(Color.parseColor("#AD1457"))
+        }
         setContentView(R.layout.activity_main)
 
 
@@ -57,8 +69,7 @@ class MainActivity : AppCompatActivity() {
 //            }
 //        )
 
-        viewOfLayout =
-            DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
+        viewOfLayout = DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
 
         InitApp.viewModel = ViewModelProvider(
             this, MyViewModelFactory(
@@ -75,6 +86,24 @@ class MainActivity : AppCompatActivity() {
 
         changeFragment(CategoriesFragment(), false)
 
+        viewOfLayout?.imageRate!!.setOnClickListener {
+            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=com.androidinnovations.photosview")))
+
+        }
+
+        viewOfLayout?.imageShare!!.setOnClickListener {
+            val intent= Intent()
+            intent.action=Intent.ACTION_SEND
+            intent.putExtra(Intent.EXTRA_TEXT,"Hey Check out this Great app:")
+            intent.type="text/plain"
+            startActivity(Intent.createChooser(intent,"Share To:"))
+        }
+
+    }
+
+    fun changeTopBarText(value: String)
+    {
+        viewOfLayout?.textViewCategory!!.setText(value)
     }
 
     fun changeFragment(nextFragment: Fragment, removeBackStack: Boolean) {
@@ -156,7 +185,7 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var adLoader: AdLoader
     private fun loadNativeAds() {
-        adLoader = AdLoader.Builder(this, "ca-app-pub-3940256099942544/2247696110")
+        adLoader = AdLoader.Builder(this, getString(R.string.nativeAd_key))
             .forNativeAd { ad: NativeAd ->
                 // Show the ad.
                 if (isDestroyed) {

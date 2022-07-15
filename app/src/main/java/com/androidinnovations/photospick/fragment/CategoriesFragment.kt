@@ -73,7 +73,7 @@ class CategoriesFragment: Fragment() {
             }
 
             override fun onMenuClick(view: View, position: Int) {
-                showPopupMenu(view)
+
 
             }
 
@@ -84,7 +84,7 @@ class CategoriesFragment: Fragment() {
         viewOfLayout!!.categoriesListing?.addItemDecoration(
             GridSpacingItemDecoration(
                 2,
-                resources.getDimension(com.intuit.sdp.R.dimen._10sdp).roundToInt(),
+                0,
                 true
             )
         )
@@ -93,25 +93,6 @@ class CategoriesFragment: Fragment() {
 
     }
 
-    fun showPopupMenu(view: View) {
-        PopupMenu(view.context, view).apply {
-            menuInflater.inflate(R.menu.image_menu, menu)
-            setOnMenuItemClickListener { item ->
-                when(item.title)
-                {
-                    "Download" ->
-                    {
-
-                    }
-                    "set_wallpaper" ->
-                    {
-
-                    }
-                }
-                true
-            }
-        }.show()
-    }
 
     private fun loadRecyclerData() {
         var modelData1 = CategoriesModel(1, "Nature", R.drawable.ic_nature)
@@ -119,7 +100,7 @@ class CategoriesFragment: Fragment() {
         var modelData3 = CategoriesModel(3, "Science", R.drawable.ic_science)
         var modelData4 = CategoriesModel(4, "Education", R.drawable.ic_education)
         var modelData5 = CategoriesModel(5, "Mehndi", R.drawable.ic_mehndi)
-        var modelData6 = CategoriesModel(6, "Wedding", R.drawable.ic_wedding)
+        var modelData6 = CategoriesModel(6, "Computer", R.drawable.ic_computer)
         var listData: ArrayList<CategoriesModel> = ArrayList()
         listData.add(modelData1)
         listData.add(modelData2)
@@ -136,7 +117,7 @@ class CategoriesFragment: Fragment() {
         var adRequest = AdRequest.Builder().build()
         InterstitialAd.load(
             requireContext(),
-            "ca-app-pub-3940256099942544/1033173712",
+            requireContext().getString(R.string.interstetialAd_key),
             adRequest,
             object : InterstitialAdLoadCallback() {
                 override fun onAdFailedToLoad(adError: LoadAdError) {

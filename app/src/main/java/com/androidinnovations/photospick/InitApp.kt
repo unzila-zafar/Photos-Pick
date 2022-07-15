@@ -21,7 +21,7 @@ class InitApp : Application() {
         final val ApiKey = "28200790-994ee58bd6dd493ead5874abc" // api key for getting images
 
         lateinit var viewModel: MainViewModel
-
+        val PROGRESS_UPDATE = "progress_update"
         @JvmStatic
         fun get(context: Context): InitApp {
             return context.applicationContext as InitApp
