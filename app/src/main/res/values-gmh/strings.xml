@@ -1,3 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="nature">Natur</string>
+    <string name="food">Essen</string>
+    <string name="science">Wissenschaft</string>
+    <string name="music">Musik</string>
+    <string name="education">Ausbildung</string>
+    <string name="mehndi">Mehndi</string>
+    <string name="animals">Tiere</string>
+    <string name="computer">Computer</string>
+    <string name="categories">Kategorien</string>
+    <string name="settings">Einstellungen</string>
+    <string name="language">Sprache</string>
+    <string name="share">Teilen Sie eine App</string>
+    <string name="rate">Bewerten Sie eine App</string>
+    <string name="about_app">Über App</string>
+    <string name="about">Über uns</string>
+    <string name="company_about">Willkommen bei Android Innovations, Ihrer ersten Quelle für alle Android-Anwendungen. Wir sind bestrebt, Ihnen das Beste aus unseren Anwendungen bereitzustellen, wobei der Schwerpunkt auf den neuesten Technologien, Trends und Benutzeranforderungen liegt.\n\n Wir hoffen, dass Ihnen unsere Produkte genauso viel Freude bereiten, wie wir es genießen, sie Ihnen anzubieten.\n\n Wenn Sie Fragen oder Anmerkungen haben, zögern Sie bitte nicht, uns zu kontaktieren.</string>
 </resources>

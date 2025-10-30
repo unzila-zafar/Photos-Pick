@@ -1,7 +1,32 @@
 <resources>
-    <string name="app_name">Photo Pick</string>
-    <string name="admob_key">ca-app-pub-5200009588101519~4272875553</string>
-    <string name="bannerAd_key">ca-app-pub-5200009588101519/5999507300</string>
-    <string name="interstetialAd_key">ca-app-pub-5200009588101519/6929445594</string>
-    <string name="nativeAd_key">ca-app-pub-5200009588101519/2990200583</string>
+    <string name="app_name" translatable="false">Photo Pick</string>
+    <string name="admob_key" translatable="false">ca-app-pub-5200009588101519~6299141195</string><!--ca-app-pub-5200009588101519~4272875553-->
+    <string name="bannerAd_key" translatable="false">ca-app-pub-5200009588101519/4296612625</string><!--//ca-app-pub-5200009588101519/5999507300-->
+    <string name="interstetialAd_key" translatable="false">ca-app-pub-5200009588101519/9357367617</string> <!--//ca-app-pub-5200009588101519/6929445594-->
+    <string name="nativeAd_key" translatable="false">ca-app-pub-5200009588101519/1442400332</string> <!--//ca-app-pub-5200009588101519/2990200583-->
+    <string name="testnativeAd_key" translatable="false">ca-app-pub-3940256099942544/2247696110</string> <!--//ca-app-pub-5200009588101519/2990200583-->
+    <string name="testbanner_key" translatable="false">ca-app-pub-3940256099942544/6300978111</string> <!--//ca-app-pub-5200009588101519/2990200583-->
+    <string name="testinter_key" translatable="false">ca-app-pub-3940256099942544/1033173712</string> <!--//ca-app-pub-5200009588101519/2990200583-->
+
+<!--
+    app strings
+-->
+    <string name="categories">Categories</string>
+    <string name="nature">Nature</string>
+    <string name="food">Food</string>
+    <string name="science">Science</string>
+    <string name="music">Music</string>
+    <string name="education">Education</string>
+    <string name="mehndi">Mehndi</string>
+    <string name="animals">Animals</string>
+    <string name="computer">Computer</string>
+    <string name="settings">Settings</string>
+    <string name="language">Language</string>
+    <string name="share">Share an App</string>
+    <string name="rate">Rate an App</string>
+    <string name="about_app">About App</string>
+    <string name="about">About Us</string>
+    <string name="company_about" >Welcome to Android Innovations, your number one source for all android applications. \n\nWe&quot;re dedicated to providing you the very best of our applications, with an emphasis on latest technologies, trends and user needs. \n\nWe hope you enjoy our products as much as we enjoy offering them to you. If you have any questions or comments, Please don't hesitate to contact us.
+    </string>
+
 </resources>

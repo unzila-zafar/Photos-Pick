@@ -1,4 +1,4 @@
-package com.ozoneddigital.adamJee.generics
+package com.androidinnovations.photospick.generics
 
 
 import android.content.Context
@@ -386,14 +386,14 @@ class GenericAdapter<T : ListItemViewModel>(@LayoutRes val layoutId: Int) :
                         try {
                             myfield[selectedIndex].isAccessible = true
                             val finalValue = if (shouldReplaceSpace)
-                                value.toLowerCase().replace(" ", "_")
+                                value.lowercase().replace(" ", "_")
                             else
-                                value.toLowerCase()
+                                value.lowercase()
                             if (myfield[selectedIndex][Item] != null
-                                && (myfield[selectedIndex][Item].toString().toLowerCase()
+                                && (myfield[selectedIndex][Item].toString().lowercase()
                                     .equals(finalValue)
                                         || ignoreString != "" && myfield[selectedIndex][Item].toString()
-                                    .toLowerCase().contains(ignoreString.toLowerCase()))
+                                    .lowercase().contains(ignoreString.lowercase()))
                             )
                                 filterList.add(Item)
                         } catch (e: IllegalAccessException) {
@@ -442,9 +442,9 @@ class GenericAdapter<T : ListItemViewModel>(@LayoutRes val layoutId: Int) :
                                 myfield[i].isAccessible = true
                                 if (myfield[i][filterList[k]] != null) {
                                     val fieldVal =
-                                        myfield[i][filterList[k]].toString().toLowerCase()
+                                        myfield[i][filterList[k]].toString().lowercase()
                                     val fieldValToCheck =
-                                        keyPair.getValue(fields[i].name).toLowerCase()
+                                        keyPair.getValue(fields[i].name).lowercase()
                                     if (fieldValToCheck == "isEmpty") {
                                         if (fieldVal.isNotEmpty()) {
                                             itemToRemove.add(filterList[k])
@@ -502,8 +502,8 @@ class GenericAdapter<T : ListItemViewModel>(@LayoutRes val layoutId: Int) :
                                 compare =
                                     fields[value1][Item] == java.lang.Boolean.parseBoolean(value)
                             } else if (fields[value1][Item] is String) {
-                                compare = (fields[value1][Item] as String).toLowerCase()
-                                    .contains(value.toLowerCase())
+                                compare = (fields[value1][Item] as String).lowercase()
+                                    .contains(value.lowercase())
                             } else if (fields[value1][Item] is Int) {
                                 compare = fields[value1][Item] == value.toInt()
                             } else if (fields[value1][Item] is Double) {
@@ -576,6 +576,8 @@ class GenericAdapter<T : ListItemViewModel>(@LayoutRes val layoutId: Int) :
                         })
                     }
                 }
+
+                else -> {}
             }
             notifyDataSetChanged()
         }
@@ -690,7 +692,7 @@ class GenericAdapter<T : ListItemViewModel>(@LayoutRes val layoutId: Int) :
                                     myfield[filterSelectedItem].isAccessible = true
                                     if (myfield[filterSelectedItem][Item] != null &&
                                         myfield[filterSelectedItem][Item].toString()
-                                            .toLowerCase()
+                                            .lowercase()
                                             .contains(query!!)
                                     ) {
                                         resultsData.add(Item)
@@ -766,7 +768,7 @@ class GenericAdapter<T : ListItemViewModel>(@LayoutRes val layoutId: Int) :
 
     /*Enabled Swipe to Delete Function*/
 
-    var swipeToDeleteCallback:  com.androidinnovations.photosview.util.SwipeToDeleteCallback? = null
+    var swipeToDeleteCallback:  com.androidinnovations.photospick.util.SwipeToDeleteCallback? = null
     var itemTouchhelper: ItemTouchHelper? = null
     var isAttached = false
     var swipeRecyclerView: RecyclerView? = null
@@ -779,7 +781,7 @@ class GenericAdapter<T : ListItemViewModel>(@LayoutRes val layoutId: Int) :
             IS_SWIPE_ENABLED = true
             swipeCallback = Callback
             swipeToDeleteCallback = object :
-                com.androidinnovations.photosview.util.SwipeToDeleteCallback(recyclerView!!.context, false) {
+                com.androidinnovations.photospick.util.SwipeToDeleteCallback(recyclerView!!.context, false) {
                 override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                     val position = viewHolder.adapterPosition
                     val item = data.get(position)

@@ -8,6 +8,7 @@
         <item name="colorAccent">@color/colorAccent</item>
         <!--        <item name="fontPath">assets/Roboto-Bold.ttf</item>-->
 <!--        <item name="android:windowSplashScreenBackground">@color/white</item>-->
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
 
         <item name="android:fontFamily">@font/roboto_black</item>
         <item name="android:fitsSystemWindows">true</item>
@@ -19,6 +20,7 @@
         <item name="android:textAppearanceLargePopupMenu">@style/myPopupMenuTextAppearanceLarge</item>
         <item name="android:textAppearanceSmallPopupMenu">@style/myPopupMenuTextAppearanceSmall</item>
         <item name="android:actionMenuTextColor">@color/white</item>
+        <item name="android:statusBarColor">@color/colorPrimary</item>
 
         <item name="android:windowDisablePreview">true</item>
         <item name="android:windowIsTranslucent">true</item>

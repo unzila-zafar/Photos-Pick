@@ -1,4 +1,4 @@
-package com.ozoneddigital.adamJee.generics
+package com.androidinnovations.photospick.generics
 
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView

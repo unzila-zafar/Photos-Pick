@@ -1,70 +1,175 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:app="http://schemas.android.com/apk/res-auto">
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/topView"
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/main_layout"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_45sdp"
-        android:background="@color/colorAccent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent"
+        android:background="@color/black">
+
+        <!--                <ImageView-->
+        <!--                    android:id="@+id/imageViewLarge"-->
+        <!--                    android:layout_width="match_parent"-->
+        <!--                    android:layout_height="match_parent"-->
+        <!--                    android:adjustViewBounds="true"-->
+        <!--                    android:src="@drawable/ic_nature"-->
+        <!--                    android:scaleType="centerCrop"-->
+        <!--                    android:layout_gravity="center"-->
+        <!--                    app:layout_constraintStart_toStartOf="parent"-->
+        <!--                    app:layout_constraintTop_toTopOf="parent" />-->
 
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Photo"
-            android:fontFamily="@font/roboto_light"
-            android:textColor="@color/white"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-    <androidx.cardview.widget.CardView
-        xmlns:card_view="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/card_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        card_view:cardElevation="@dimen/_5sdp"
-        card_view:cardCornerRadius="4dp"
-        card_view:layout_constraintTop_toBottomOf="@+id/topView"
-        card_view:layout_constraintStart_toStartOf="parent">
-
-        <ImageView
-            android:id="@+id/imageView"
+        <com.jsibbold.zoomage.ZoomageView
+            android:id="@+id/myZoomageView"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_200sdp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            android:layout_height="match_parent"
+            android:background="@color/black"
+            android:src="@drawable/ic_nature"
+            app:zoomage_animateOnReset="true"
+            app:zoomage_autoCenter="true"
+            app:zoomage_autoResetMode="UNDER"
+            app:zoomage_maxScale="8"
+            app:zoomage_minScale="0.6"
             android:adjustViewBounds="true"
-            android:src="@drawable/ic_nature" />
-    </androidx.cardview.widget.CardView>
+            app:zoomage_restrictBounds="false"
+            app:zoomage_translatable="true"
+            app:zoomage_zoomable="true" />
+
+        <!--            <com.otaliastudios.zoom.ZoomLayout-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="match_parent"-->
+        <!--                android:scrollbars="vertical|horizontal"-->
+        <!--                app:transformation="centerInside"-->
+        <!--                app:transformationGravity="auto"-->
+        <!--                app:alignment="center"-->
+        <!--                app:overScrollHorizontal="true"-->
+        <!--                app:overScrollVertical="true"-->
+        <!--                app:overPinchable="true"-->
+        <!--                app:horizontalPanEnabled="true"-->
+        <!--                app:verticalPanEnabled="true"-->
+        <!--                app:zoomEnabled="true"-->
+        <!--                app:flingEnabled="true"-->
+        <!--                app:scrollEnabled="true"-->
+        <!--                app:oneFingerScrollEnabled="true"-->
+        <!--                app:twoFingersScrollEnabled="true"-->
+        <!--                app:threeFingersScrollEnabled="true"-->
+        <!--                app:minZoom="0.7"-->
+        <!--                app:minZoomType="zoom"-->
+        <!--                app:maxZoom="2.5"-->
+        <!--                app:maxZoomType="zoom"-->
+        <!--                android:background="@color/black"-->
+        <!--                app:layout_constraintEnd_toEndOf="parent"-->
+        <!--                app:layout_constraintStart_toStartOf="parent"-->
+        <!--                app:layout_constraintTop_toTopOf="parent"-->
+        <!--                app:animationDuration="280"-->
+        <!--                app:hasClickableChildren="false">-->
+
+        <!--                <ImageView-->
+        <!--                    android:id="@+id/imageViewLarge"-->
+        <!--                    android:layout_width="match_parent"-->
+        <!--                    android:layout_height="match_parent"-->
+        <!--                    android:adjustViewBounds="true"-->
+        <!--                    android:src="@drawable/ic_nature"-->
+        <!--                    android:scaleType="centerCrop"-->
+        <!--                    android:layout_gravity="center"-->
+        <!--                    app:layout_constraintStart_toStartOf="parent"-->
+        <!--                    app:layout_constraintTop_toTopOf="parent" />-->
+        <!--            </com.otaliastudios.zoom.ZoomLayout>-->
 
 
-    <com.google.android.gms.ads.AdView
-        xmlns:ads="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/adView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
-        ads:adSize="BANNER"
-        ads:adUnitId="ca-app-pub-3940256099942544/6300978111"
-        ads:layout_constraintBottom_toBottomOf="parent"
-        ads:layout_constraintStart_toStartOf="parent"
-        ads:layout_constraintEnd_toEndOf="parent">
-    </com.google.android.gms.ads.AdView>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/topView"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_45sdp"
+            android:background="@color/transparent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/imageBack"
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_gravity="left|center"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:adjustViewBounds="true"
+                android:clickable="true"
+                android:padding="@dimen/_3sdp"
+                android:src="@drawable/ic_arrow_left"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/white" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:gravity="right"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+                <ImageView
+                    android:id="@+id/imageDownload"
+                    android:layout_width="@dimen/_30sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_gravity="right|center"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:adjustViewBounds="true"
+                    android:clickable="true"
+                    android:padding="@dimen/_3sdp"
+                    android:src="@drawable/ic_download_circle"
+                    app:tint="@color/white" />
+
+                <ImageView
+                    android:id="@+id/imageWallpaper"
+                    android:layout_width="@dimen/_30sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_gravity="left|center"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:adjustViewBounds="true"
+                    android:clickable="true"
+                    android:padding="@dimen/_2sdp"
+                    android:src="@drawable/ic_wallpaper"
+                    app:tint="@color/white" />
+
+
+                <ImageView
+                    android:id="@+id/imageSharePic"
+                    android:layout_width="@dimen/_27sdp"
+                    android:layout_height="@dimen/_27sdp"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_marginEnd="@dimen/_8sdp"
+                    android:adjustViewBounds="true"
+                    android:clickable="true"
+                    android:padding="@dimen/_3sdp"
+                    android:src="@drawable/ic_share"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:tint="@color/white" />
+
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/adView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            ads:adSize="BANNER"
+            ads:adUnitId="@string/bannerAd_key"
+            ads:layout_constraintBottom_toBottomOf="parent"
+            ads:layout_constraintEnd_toEndOf="parent"
+            ads:layout_constraintStart_toStartOf="parent">
+
+        </com.google.android.gms.ads.AdView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -3,9 +3,7 @@
     <item android:left="-0.5dp" android:right="-0.5dp" android:top="-0.5dp">
         <shape android:shape="rectangle">
             <solid android:color="@color/white" />
-            <stroke
-                android:width="0.5dp"
-                android:color="@color/grey05" />
+            <corners android:radius="@dimen/_5sdp"/>
         </shape>
     </item>
 </layer-list>

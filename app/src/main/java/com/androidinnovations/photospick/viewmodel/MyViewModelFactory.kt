@@ -1,8 +1,8 @@
-package com.androidinnovations.photosview.viewmodel
+package com.androidinnovations.photospick.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.androidinnovations.photosview.retrofit.MainRepository
+import com.androidinnovations.photospick.retrofit.MainRepository
 
 class MyViewModelFactory constructor(private val repository: MainRepository): ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {

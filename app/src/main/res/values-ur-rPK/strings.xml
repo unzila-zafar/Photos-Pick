@@ -1,3 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="categories">اقسام</string>
+    <string name="nature">قُدرت</string>
+    <string name="food">کھانا</string>
+    <string name="science">سائنس</string>
+    <string name="music">موسیقی</string>
+    <string name="education">تعلیم</string>
+    <string name="mehndi">مہندی</string>
+    <string name="animals">جانور</string>
+    <string name="computer">کمپیوٹر</string>
+    <string name="settings">ترتیبات</string>
+    <string name="language">زبان</string>
+    <string name="share">ایک ایپ بانٹیں</string>
+    <string name="rate">ایپ کی درجہ بندی کریں</string>
+    <string name="about_app">ایپ کے بارے میں</string>
+    <string name="about">ہمارے بارے میں</string>
+    <string name="company_about">اینڈروئیڈ انوویشنز میں خوش آمدید، تمام android ایپلیکیشنز کے لیے آپ کا نمبر ایک ذریعہ۔n\n\ ہم آپ کو جدید ترین ٹیکنالوجیز، رجحانات اور صارف کی ضروریات پر زور دیتے ہوئے اپنی بہترین ایپلی کیشنز فراہم کرنے کے لیے وقف ہیں۔ ہم امید کرتے ہیں کہ آپ ہماری مصنوعات سے اتنا ہی لطف اندوز ہوں گے جتنا ہم آپ کو پیش کرنے میں لطف اندوز ہوتے ہیں۔n\n\ اگر آپ کے کوئی سوالات یا تبصرے ہیں، تو براہ کرم ہم سے رابطہ کرنے میں سنکوچ نہ کریں۔</string>
 </resources>

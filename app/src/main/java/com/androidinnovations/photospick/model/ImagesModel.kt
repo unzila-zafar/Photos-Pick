@@ -1,6 +1,6 @@
-package com.androidinnovations.photosview.model
+package com.androidinnovations.photospick.model
 
-import com.ozoneddigital.adamJee.generics.ListItemViewModel
+import com.androidinnovations.photospick.generics.ListItemViewModel
 
 data class ImagesModel(
     val total: Int,

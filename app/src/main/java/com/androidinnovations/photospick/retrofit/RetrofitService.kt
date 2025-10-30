@@ -1,6 +1,6 @@
-package com.androidinnovations.photosview.retrofit
+package com.androidinnovations.photospick.retrofit
 
-import com.androidinnovations.photosview.model.ImagesModel
+import com.androidinnovations.photospick.model.ImagesModel
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call

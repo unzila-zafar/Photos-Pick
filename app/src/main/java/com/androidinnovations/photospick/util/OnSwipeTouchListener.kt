@@ -1,4 +1,4 @@
-package com.androidinnovations.photosview.util
+package com.androidinnovations.photospick.util
 
 import android.content.Context
 import android.view.GestureDetector
@@ -6,23 +6,55 @@ import android.view.MotionEvent
 import android.view.View
 import android.widget.ImageView
 
-class OnSwipeTouchListener internal constructor(ctx: Context, mainView: ImageView, val Callback:onSwipeListener) : View.OnTouchListener {
+class OnSwipeTouchListener internal constructor(
+    ctx: Context,
+    mainView: ImageView,
+    val Callback: onSwipeListener
+) : View.OnTouchListener {
     private val gestureDetector: GestureDetector
     var context: Context
     override fun onTouch(v: View?, event: MotionEvent?): Boolean {
-        return gestureDetector.onTouchEvent(event)
+        return gestureDetector.onTouchEvent(event!!)
     }
 
-    inner class GestureListener : GestureDetector.SimpleOnGestureListener() {
-        override fun onDown(e: MotionEvent?): Boolean {
+    inner class GestureListener : GestureDetector.OnGestureListener {
+
+
+        override fun onDown(e: MotionEvent): Boolean {
             return true
         }
 
-        override fun onFling(e1: MotionEvent, e2: MotionEvent, velocityX: Float, velocityY: Float): Boolean {
+        override fun onShowPress(e: MotionEvent) {
+            TODO("Not yet implemented")
+        }
+
+        override fun onSingleTapUp(e: MotionEvent): Boolean {
+            TODO("Not yet implemented")
+        }
+
+        override fun onScroll(
+            e1: MotionEvent?,
+            e2: MotionEvent,
+            distanceX: Float,
+            distanceY: Float
+        ): Boolean {
+            TODO("Not yet implemented")
+        }
+
+        override fun onLongPress(e: MotionEvent) {
+            TODO("Not yet implemented")
+        }
+
+        override fun onFling(
+            e1: MotionEvent?,
+            e2: MotionEvent,
+            velocityX: Float,
+            velocityY: Float
+        ): Boolean {
             var result = false
             try {
-                val diffY = e2.y - e1.y
-                val diffX = e2.x - e1.x
+                val diffY = e2.y - e1!!.y
+                val diffX = e2.x - e1!!.x
                 if (Math.abs(diffX) > Math.abs(diffY)) {
                     if (Math.abs(diffX) > Companion.SWIPE_THRESHOLD && Math.abs(velocityX) > Companion.SWIPE_VELOCITY_THRESHOLD) {
                         if (diffX > 0) {
@@ -51,11 +83,12 @@ class OnSwipeTouchListener internal constructor(ctx: Context, mainView: ImageVie
 
 
     interface onSwipeListener {
-        fun swipeRight(){}
+        fun swipeRight() {}
         fun swipeTop()
         fun swipeBottom()
-        fun swipeLeft(){}
+        fun swipeLeft() {}
     }
+
     companion object {
         private const val SWIPE_THRESHOLD = 100
         private const val SWIPE_VELOCITY_THRESHOLD = 100

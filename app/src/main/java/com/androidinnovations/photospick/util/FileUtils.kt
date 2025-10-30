@@ -1,4 +1,4 @@
-package com.androidinnovations.photosview.util
+package com.androidinnovations.photospick.util
 
 import android.content.ContentResolver
 import android.content.ContentValues
@@ -101,7 +101,7 @@ fun Context.getMimeType(file:File): String {
     } else {
         val fileExtension = MimeTypeMap.getFileExtensionFromUrl(file.toUri().toString());
         MimeTypeMap.getSingleton().getMimeTypeFromExtension(
-            fileExtension.toLowerCase()
+            fileExtension.lowercase()
         );
     }
     return mimeType!!

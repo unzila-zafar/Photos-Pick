@@ -6,76 +6,140 @@
 
         <variable
             name="listItemViewModel"
-            type="com.androidinnovations.photosview.model.ImagesModel.Hits" />
-        <import  alias="util" type="com.androidinnovations.photosview.util.Util"/>
+            type="com.androidinnovations.photospick.model.ImagesModel.Hits" />
+
+        <import
+            alias="util"
+            type="com.androidinnovations.photospick.util.Util" />
+
         <import type="android.view.View" />
     </data>
 
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
+    <LinearLayout xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_5sdp"
         android:onClick="@{(view) -> listItemViewModel.onItemClickListener.onClick(view,listItemViewModel.adapterPosition)}"
-        android:layout_margin="@dimen/_5sdp">
+        android:orientation="vertical"
+        card_view:cardCornerRadius="4dp"
+        card_view:cardElevation="@dimen/_5sdp">
+
 
         <androidx.cardview.widget.CardView
-            xmlns:card_view="http://schemas.android.com/apk/res-auto"
             android:id="@+id/card_view"
-            android:layout_width="@dimen/_200sdp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            card_view:cardElevation="@dimen/_5sdp"
+            android:layout_gravity="top|center"
             card_view:cardCornerRadius="4dp"
-            card_view:layout_constraintTop_toTopOf="parent"
-            card_view:layout_constraintStart_toStartOf="parent">
+            card_view:layout_constraintStart_toStartOf="parent"
+            card_view:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_150sdp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:adjustViewBounds="true"
-            android:src="@{listItemViewModel.previewURL}" />
 
             <ImageView
-                android:id="@+id/imageDownload"
-                android:layout_width="@dimen/_25sdp"
-                android:layout_height="@dimen/_25sdp"
+                android:id="@+id/imageView"
+                android:layout_width="@dimen/_150sdp"
+                android:layout_height="@dimen/_100sdp"
+                android:layout_gravity="top|center"
                 android:adjustViewBounds="true"
-                android:layout_weight="1"
-                android:onClick="@{(view) -> listItemViewModel.onItemClickListener.onMenuClick(view,listItemViewModel.adapterPosition)}"
+                android:scaleType="fitCenter"
+                android:src="@{listItemViewModel.previewURL}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/imageFulscreen"
+                android:layout_width="@dimen/_28sdp"
+                android:layout_height="@dimen/_28sdp"
                 android:layout_gravity="right"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:background="@color/transparent"
+                android:onClick="@{(view) -> listItemViewModel.onItemClickListener.onMenuClick(view,listItemViewModel.adapterPosition)}"
                 android:padding="@dimen/_2sdp"
-                android:layout_marginEnd="@dimen/_5sdp"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:src="@drawable/ic_menu" />
+                android:src="@drawable/ic_fullscreen"
+                app:tint="@color/black" />
 
-
-<!--            <LinearLayout-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="@dimen/_40sdp"-->
-<!--                android:background="#59B2B2B2"-->
-<!--                android:orientation="horizontal"-->
-<!--                android:layout_gravity="bottom|center"-->
-<!--                android:gravity="center">-->
-
-<!--                <ImageView-->
-<!--                    android:id="@+id/imageDownload"-->
-<!--                    android:layout_width="@dimen/_20sdp"-->
-<!--                    android:layout_height="@dimen/_20sdp"-->
-<!--                    android:adjustViewBounds="true"-->
-<!--                    android:layout_weight="1"-->
-<!--                    android:src="@drawable/ic_download_circle" />-->
-<!--                <ImageView-->
-<!--                    android:id="@+id/imageWallpaper"-->
-<!--                    android:layout_width="@dimen/_20sdp"-->
-<!--                    android:layout_height="@dimen/_20sdp"-->
-<!--                    android:adjustViewBounds="true"-->
-<!--                    android:layout_weight="1"-->
-<!--                    android:src="@drawable/ic_wallpaper" />-->
-
-<!--            </LinearLayout>-->
         </androidx.cardview.widget.CardView>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <!--        <LinearLayout-->
+        <!--            android:layout_width="@dimen/_150sdp"-->
+        <!--            android:layout_height="@dimen/_35sdp"-->
+        <!--            android:layout_gravity="bottom"-->
+        <!--            android:background="@color/transparent"-->
+        <!--            android:orientation="horizontal"-->
+        <!--            android:weightSum="3">-->
+
+
+        <!--            <ImageView-->
+        <!--                android:id="@+id/imageDownload"-->
+        <!--                android:layout_width="@dimen/_25sdp"-->
+        <!--                android:layout_height="@dimen/_25sdp"-->
+        <!--                android:layout_gravity="center"-->
+        <!--                android:layout_weight="1"-->
+        <!--                android:adjustViewBounds="true"-->
+        <!--                android:onClick="@{(view) -> listItemViewModel.onItemClickListener.onMenuClick(view,listItemViewModel.adapterPosition)}"-->
+        <!--                android:padding="@dimen/_3sdp"-->
+        <!--                android:src="@drawable/ic_menu"-->
+        <!--                app:tint="@color/colorPrimary" />-->
+
+        <!--            <LinearLayout-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_gravity="center"-->
+        <!--                android:layout_weight="1"-->
+        <!--                android:orientation="horizontal">-->
+
+        <!--                <TextView-->
+        <!--                    android:layout_width="match_parent"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:layout_gravity="left"-->
+        <!--                    android:fontFamily="@font/roboto_light"-->
+        <!--                    android:gravity="left"-->
+        <!--                    android:text="Likes: "-->
+        <!--                    android:textColor="@color/colorPrimary" />-->
+
+        <!--                <TextView-->
+        <!--                    android:id="@+id/textView"-->
+        <!--                    android:layout_width="match_parent"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:layout_gravity="center"-->
+        <!--                    android:fontFamily="@font/roboto_bold"-->
+        <!--                    android:gravity="center"-->
+        <!--                    android:text="@{listItemViewModel.likes}"-->
+        <!--                    android:textColor="@color/black" />-->
+        <!--            </LinearLayout>-->
+
+        <!--            <LinearLayout-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_gravity="center"-->
+        <!--                android:layout_weight="1"-->
+        <!--                android:orientation="horizontal">-->
+
+        <!--                <TextView-->
+        <!--                    android:layout_width="match_parent"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:layout_gravity="left"-->
+        <!--                    android:fontFamily="@font/roboto_light"-->
+        <!--                    android:gravity="left"-->
+        <!--                    android:text="Downloads: "-->
+        <!--                    android:textColor="@color/colorPrimary" />-->
+
+        <!--                <TextView-->
+        <!--                    android:id="@+id/textViewDownloads"-->
+        <!--                    android:layout_width="match_parent"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:layout_gravity="center"-->
+        <!--                    android:fontFamily="@font/roboto_bold"-->
+        <!--                    android:gravity="center"-->
+        <!--                    android:text="@{listItemViewModel.downloads}"-->
+        <!--                    android:textColor="@color/black" />-->
+        <!--            </LinearLayout>-->
+
+
+        <!--        </LinearLayout>-->
+
+    </LinearLayout>
 </layout>

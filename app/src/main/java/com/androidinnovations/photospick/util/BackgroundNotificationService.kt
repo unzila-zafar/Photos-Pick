@@ -1,4 +1,4 @@
-package com.androidinnovations.photosview.util
+package com.androidinnovations.photospick.util
 
 import android.app.IntentService
 import android.app.NotificationChannel
@@ -10,12 +10,11 @@ import android.net.Uri
 import android.os.Build
 import androidx.core.app.NotificationCompat
 import androidx.core.content.FileProvider
-import androidx.localbroadcastmanager.content.LocalBroadcastManager
-import com.androidinnovations.photosview.BuildConfig
-import com.androidinnovations.photosview.InitApp
+import com.androidinnovations.photospick.InitApp
 import com.androidinnovations.photosview.R
 import java.io.File
 import java.io.IOException
+import com.androidinnovations.photosview.BuildConfig
 
 class BackgroundNotificationService : IntentService("Service") {
     private var notificationBuilder: NotificationCompat.Builder? = null
@@ -68,7 +67,7 @@ class BackgroundNotificationService : IntentService("Service") {
     private fun sendProgressUpdate(downloadComplete: Boolean) {
         val intent: Intent = Intent(InitApp.PROGRESS_UPDATE)
         intent.putExtra("downloadComplete", downloadComplete)
-        LocalBroadcastManager.getInstance(this@BackgroundNotificationService).sendBroadcast(intent)
+        sendBroadcast(intent)
     }
 
     private fun onDownloadComplete(downloadComplete: Boolean, file: File?) {
@@ -91,14 +90,14 @@ class BackgroundNotificationService : IntentService("Service") {
                 this,
                 0 /* Request code */,
                 intent,
-                PendingIntent.FLAG_ONE_SHOT or PendingIntent.FLAG_MUTABLE
+                PendingIntent.FLAG_ONE_SHOT or PendingIntent.FLAG_MUTABLE or PendingIntent.FLAG_NO_CREATE
             )
         else
             PendingIntent.getActivity(
                 this,
                 0 /* Request code */,
                 intent,
-                PendingIntent.FLAG_ONE_SHOT)
+                PendingIntent.FLAG_ONE_SHOT or PendingIntent.FLAG_IMMUTABLE)
         notificationManager!!.cancel(0)
         notificationBuilder!!.setSmallIcon(R.mipmap.ic_launcher)
         notificationBuilder!!.setProgress(0, 0, false)

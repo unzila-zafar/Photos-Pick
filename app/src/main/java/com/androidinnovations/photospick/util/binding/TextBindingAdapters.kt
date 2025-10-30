@@ -1,4 +1,4 @@
-package com.androidinnovations.photosview.util.binding
+package com.androidinnovations.photospick.util.binding
 
 import android.view.View
 import android.widget.TextView

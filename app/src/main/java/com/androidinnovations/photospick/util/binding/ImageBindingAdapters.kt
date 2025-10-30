@@ -1,9 +1,9 @@
-package com.ozoneddigital.adamJee.ui.binding
+package com.androidinnovations.photospick.util.binding
 
 import android.graphics.drawable.Drawable
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
-import com.androidinnovations.photosview.util.Util.Companion.fetchImage
+import com.androidinnovations.photospick.util.Util.Companion.fetchImage
 
 
 object ImageBindingAdapters {

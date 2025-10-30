@@ -1,42 +1,40 @@
-package com.androidinnovations.photosview
+package com.androidinnovations.photospick
 
 import android.content.Intent
 import android.graphics.Color
-import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
-import android.view.Window
-import android.view.WindowManager
+import android.view.*
+import android.widget.FrameLayout
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.activity.OnBackPressedCallback
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.androidinnovations.photospick.fragment.CategoriesFragment
+import com.androidinnovations.photospick.fragment.ImagesFragment
+import com.androidinnovations.photospick.retrofit.MainRepository
+import com.androidinnovations.photospick.retrofit.RetrofitService
+import com.androidinnovations.photospick.viewmodel.MainViewModel
+import com.androidinnovations.photospick.viewmodel.MyViewModelFactory
 import com.androidinnovations.photosview.databinding.ActivityMainBinding
-import com.androidinnovations.photosview.fragment.CategoriesFragment
-import com.androidinnovations.photosview.fragment.ImagesFragment
-import com.androidinnovations.photosview.model.CategoriesModel
-import com.androidinnovations.photosview.retrofit.MainRepository
-import com.androidinnovations.photosview.retrofit.RetrofitService
-import com.androidinnovations.photosview.viewmodel.MainViewModel
-import com.androidinnovations.photosview.viewmodel.MyViewModelFactory
 import com.google.android.gms.ads.*
 import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import com.google.android.gms.ads.nativead.NativeAd
 import com.google.android.gms.ads.nativead.NativeAdOptions
-import com.ozoneddigital.adamJee.generics.GenericAdapter
-
+import com.androidinnovations.photosview.R
+import com.google.android.gms.ads.nativead.MediaView
+import com.google.android.gms.ads.nativead.NativeAdView
 
 //unzila
 class MainActivity : AppCompatActivity() {
-
-
-    lateinit var categoriesAdapter: GenericAdapter<CategoriesModel>
     private var viewOfLayout: ActivityMainBinding? = null
     private var mInterstitialAd: InterstitialAd? = null
-
 
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,7 +47,6 @@ class MainActivity : AppCompatActivity() {
             window.setStatusBarColor(Color.parseColor("#AD1457"))
         }
         setContentView(R.layout.activity_main)
-
 
 //        // Set up an OnPreDrawListener to the root view.
 //        val content: View = findViewById(android.R.id.content)
@@ -69,7 +66,8 @@ class MainActivity : AppCompatActivity() {
 //            }
 //        )
 
-        viewOfLayout = DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
+        viewOfLayout =
+            DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
 
         InitApp.viewModel = ViewModelProvider(
             this, MyViewModelFactory(
@@ -86,25 +84,51 @@ class MainActivity : AppCompatActivity() {
 
         changeFragment(CategoriesFragment(), false)
 
-        viewOfLayout?.imageRate!!.setOnClickListener {
-            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=com.androidinnovations.photosview")))
+        viewOfLayout?.imageSetting!!.setOnClickListener {
+            startActivity(Intent(this@MainActivity, SettingsActivity::class.java))
 
         }
-
-        viewOfLayout?.imageShare!!.setOnClickListener {
-            val intent= Intent()
-            intent.action=Intent.ACTION_SEND
-            intent.putExtra(Intent.EXTRA_TEXT,"Hey Check out this Great app:")
-            intent.type="text/plain"
-            startActivity(Intent.createChooser(intent,"Share To:"))
+        viewOfLayout?.imageBack!!.setOnClickListener {
+            onBackPressedDispatcher.onBackPressed()
         }
+
+        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+
+                val fragments: List<Fragment> = supportFragmentManager.fragments
+                for (f: Fragment in fragments) {
+
+                    if (supportFragmentManager.backStackEntryCount > 1) {
+                        supportFragmentManager.popBackStack()
+                        if (f is ImagesFragment)
+                            changeFragment(CategoriesFragment(), false)
+
+                    } else {
+                        moveTaskToBack(true)
+                        isEnabled = false
+                        onBackPressedDispatcher.onBackPressed()
+                    }
+
+                }
+            }
+        })
 
     }
 
-    fun changeTopBarText(value: String)
-    {
+    fun changeTopBarText(value: String) {
         viewOfLayout?.textViewCategory!!.setText(value)
     }
+
+    fun showTopView(canShow: Boolean) {
+        if (canShow.not()) {
+            viewOfLayout?.imageSetting!!.visibility = View.GONE
+            viewOfLayout?.imageBack!!.visibility = View.VISIBLE
+        } else {
+            viewOfLayout?.imageSetting!!.visibility = View.VISIBLE
+            viewOfLayout?.imageBack!!.visibility = View.GONE
+        }
+    }
+
 
     fun changeFragment(nextFragment: Fragment, removeBackStack: Boolean) {
         if (removeBackStack) {
@@ -130,6 +154,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun loadBannerAd() {
         var mAdView: AdView = findViewById(R.id.adView)
+
         val adRequest = AdRequest.Builder().build()
         mAdView.loadAd(adRequest)
     }
@@ -139,11 +164,11 @@ class MainActivity : AppCompatActivity() {
         var adRequest = AdRequest.Builder().build()
         InterstitialAd.load(
             this,
-            "ca-app-pub-3940256099942544/1033173712",
+            getString(R.string.interstetialAd_key),
             adRequest,
             object : InterstitialAdLoadCallback() {
                 override fun onAdFailedToLoad(adError: LoadAdError) {
-                    Log.d("interstetialAds", adError?.toString())
+                    adError.toString()?.let { Log.d("interstetialAds", it) }
                     mInterstitialAd = null
                 }
 
@@ -184,19 +209,38 @@ class MainActivity : AppCompatActivity() {
     }
 
     lateinit var adLoader: AdLoader
+
     private fun loadNativeAds() {
-        adLoader = AdLoader.Builder(this, getString(R.string.nativeAd_key))
+        adLoader = AdLoader.Builder(
+            this,
+            getString(R.string.nativeAd_key)
+        ) //"ca-app-pub-3940256099942544/2247696110"
             .forNativeAd { ad: NativeAd ->
                 // Show the ad.
+                Log.v("native ", "loaded")
+
                 if (isDestroyed) {
                     ad.destroy()
                     return@forNativeAd
                 }
 
+                val adView = layoutInflater.inflate(R.layout.native_ad_layout, null) as NativeAdView
+                val parent = findViewById<FrameLayout>(R.id.container_nativead)
+
+                displayNativeAd(adView, ad)
+
+                // Ensure that the parent view doesn't already contain an ad view.
+                parent.removeAllViews()
+
+                // Place the AdView into the parent.
+                parent.addView(adView)
+                parent.visibility = View.VISIBLE
+
             }
             .withAdListener(object : AdListener() {
                 override fun onAdFailedToLoad(adError: LoadAdError) {
                     // Handle the failure by logging, altering the UI, and so on.
+                    Log.v("native ", "loading error")
                 }
             })
             .withNativeAdOptions(
@@ -207,26 +251,31 @@ class MainActivity : AppCompatActivity() {
             )
             .build()
 
-        adLoader.loadAds(AdRequest.Builder().build(), 3)
+        adLoader.loadAd(AdRequest.Builder().build())
     }
 
+    fun displayNativeAd(adView: NativeAdView, ad: NativeAd) {
+        // Locate the view that will hold the headline, set its text, and use the
+        // NativeAdView's headlineView property to register it.
+        val headlineView = adView.findViewById<TextView>(R.id.ad_headline)
+        headlineView.text = ad.headline
+        adView.headlineView = headlineView
 
-    override fun onBackPressed() {
+        // Repeat the above process for the other assets in the NativeAd using
+        // additional view objects (Buttons, ImageViews, etc).
 
-        val fragments: List<Fragment> = supportFragmentManager.fragments
-        for (f: Fragment in fragments) {
+        val mediaView = adView.findViewById<MediaView>(R.id.ad_media)
+        adView.mediaView = mediaView
 
-            if (supportFragmentManager.backStackEntryCount > 1) {
-                supportFragmentManager.popBackStack()
-                if(f is ImagesFragment)
-                    changeFragment(CategoriesFragment(), false)
-
-            } else {
-                super.onBackPressed()
-
-            }
+        val cancelAd = adView.findViewById<ImageView>(R.id.ad_cancel_icon)
+        cancelAd.setOnClickListener {
+            val parent = findViewById<FrameLayout>(R.id.container_nativead)
+            parent.visibility = View.GONE
 
         }
-    }
 
+        // Call the NativeAdView's setNativeAd method to register the
+        // NativeAdObject.
+        adView.setNativeAd(ad)
+    }
 }

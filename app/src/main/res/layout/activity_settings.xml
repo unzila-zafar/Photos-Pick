@@ -1,6 +1,157 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/topView"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_45sdp"
+        android:background="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <ImageView
+            android:id="@+id/imageBack"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:padding="@dimen/_3sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:adjustViewBounds="true"
+            android:clickable="true"
+            app:tint="@color/white"
+            android:visibility="visible"
+            android:src="@drawable/ic_arrow_left" />
+
+        <TextView
+            android:id="@+id/textViewCategory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/settings"
+            android:textSize="@dimen/_15sdp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/roboto_bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    <com.google.android.gms.ads.AdView
+        xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/bannerAd_key"
+        ads:layout_constraintTop_toBottomOf="@+id/topView"
+        ads:layout_constraintStart_toStartOf="parent"
+        ads:layout_constraintEnd_toEndOf="parent">
+    </com.google.android.gms.ads.AdView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/square_bg"
+        android:layout_margin="@dimen/_10sdp"
+        app:layout_constraintTop_toBottomOf="@+id/adView1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:orientation="vertical">
+
+
+        <Button
+            android:id="@+id/setting_language_btn"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50sdp"
+            android:layout_marginTop="@dimen/_1sdp"
+            android:drawablePadding="@dimen/_6sdp"
+            android:backgroundTint="@color/white"
+            android:fontFamily="@font/roboto_regular"
+            android:gravity="start|center"
+            android:layoutDirection="locale"
+            android:paddingStart="@dimen/_21sdp"
+            android:paddingEnd="@dimen/_25sdp"
+            android:text="@string/language"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_11sdp" />
+        <Button
+            android:id="@+id/setting_rate_btn"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50sdp"
+            android:layout_marginTop="@dimen/_1sdp"
+            android:drawablePadding="@dimen/_6sdp"
+            android:backgroundTint="@color/white"
+            android:fontFamily="@font/roboto_regular"
+            android:gravity="start|center"
+            android:layoutDirection="locale"
+            android:paddingStart="@dimen/_21sdp"
+            android:paddingEnd="@dimen/_25sdp"
+            android:text="@string/rate"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_11sdp" />
+        <Button
+            android:id="@+id/setting_share_btn"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50sdp"
+            android:layout_marginTop="@dimen/_1sdp"
+            android:drawablePadding="@dimen/_6sdp"
+            android:backgroundTint="@color/white"
+            android:fontFamily="@font/roboto_regular"
+            android:gravity="start|center"
+            android:layoutDirection="locale"
+            android:paddingStart="@dimen/_21sdp"
+            android:paddingEnd="@dimen/_25sdp"
+            android:text="@string/share"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_11sdp" />
+          <Button
+            android:id="@+id/setting_about_btn"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50sdp"
+            android:layout_marginTop="@dimen/_1sdp"
+            android:drawablePadding="@dimen/_6sdp"
+            android:backgroundTint="@color/white"
+            android:fontFamily="@font/roboto_regular"
+            android:gravity="start|center"
+            android:layoutDirection="locale"
+            android:paddingStart="@dimen/_21sdp"
+            android:paddingEnd="@dimen/_25sdp"
+            android:text="@string/about_app"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_11sdp" />
+
+    </LinearLayout>
+
+
+    <com.google.android.gms.ads.AdView
+        xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/bannerAd_key"
+        ads:layout_constraintBottom_toBottomOf="parent"
+        ads:layout_constraintStart_toStartOf="parent"
+        ads:layout_constraintEnd_toEndOf="parent">
+    </com.google.android.gms.ads.AdView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

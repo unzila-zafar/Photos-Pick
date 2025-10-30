@@ -12,23 +12,87 @@
             android:id="@+id/topView"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_45sdp"
-            android:background="@color/colorAccent"
+            android:background="@color/colorPrimary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
 
+            <ImageView
+                android:id="@+id/imageBack"
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="@dimen/_30sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:padding="@dimen/_3sdp"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:adjustViewBounds="true"
+                android:clickable="true"
+                app:tint="@color/white"
+                android:visibility="gone"
+                android:src="@drawable/ic_arrow_left" />
+
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/textViewCategory"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Categories"
+                android:textSize="@dimen/_15sdp"
                 android:textColor="@color/white"
                 android:fontFamily="@font/roboto_bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+<!--            <ImageView-->
+<!--                android:id="@+id/imageRate"-->
+<!--                android:layout_width="@dimen/_30sdp"-->
+<!--                android:layout_height="@dimen/_30sdp"-->
+<!--                app:layout_constraintEnd_toEndOf="@+id/imageShare"-->
+<!--                app:layout_constraintTop_toTopOf="parent"-->
+<!--                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                android:padding="@dimen/_3sdp"-->
+<!--                android:layout_marginEnd="@dimen/_30sdp"-->
+<!--                android:adjustViewBounds="true"-->
+<!--                android:clickable="true"-->
+<!--                app:tint="@color/white"-->
+<!--                android:visibility="gone"-->
+<!--                android:src="@drawable/ic_star" />-->
+
+
+<!--            <ImageView-->
+<!--                android:id="@+id/imageShare"-->
+<!--                android:layout_width="@dimen/_27sdp"-->
+<!--                android:layout_height="@dimen/_27sdp"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="parent"-->
+<!--                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                android:padding="@dimen/_3sdp"-->
+<!--                android:layout_marginStart="@dimen/_5sdp"-->
+<!--                android:layout_marginEnd="@dimen/_8sdp"-->
+<!--                android:adjustViewBounds="true"-->
+<!--                android:clickable="true"-->
+<!--                app:tint="@color/white"-->
+<!--                android:visibility="gone"-->
+<!--                android:src="@drawable/ic_share" />-->
+            <ImageView
+                android:id="@+id/imageSetting"
+                android:layout_width="@dimen/_27sdp"
+                android:layout_height="@dimen/_27sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:padding="@dimen/_3sdp"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginEnd="@dimen/_8sdp"
+                android:adjustViewBounds="true"
+                android:clickable="true"
+                app:tint="@color/white"
+                android:src="@drawable/ic_settings" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -36,13 +100,25 @@
         <FrameLayout
             android:id="@+id/container_mainScreen"
             android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/topView"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_40sdp"
+            tools:context="com.ozoneddigital.adamJee.ui.activity.MainScreen">
+
+        </FrameLayout>
+        <FrameLayout
+            android:id="@+id/container_nativead"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/topView"
-            app:layout_constraintBottom_toTopOf="@+id/adView"
-            android:layout_marginTop="@dimen/_5sdp"
-            android:paddingBottom="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:visibility="gone"
             tools:context="com.ozoneddigital.adamJee.ui.activity.MainScreen">
 
         </FrameLayout>
@@ -53,7 +129,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             ads:adSize="BANNER"
-            ads:adUnitId="ca-app-pub-3940256099942544/6300978111"
+            ads:adUnitId="@string/bannerAd_key"
             ads:layout_constraintBottom_toBottomOf="parent"
             ads:layout_constraintStart_toStartOf="parent"
             ads:layout_constraintEnd_toEndOf="parent">

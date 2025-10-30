@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
@@ -18,18 +17,49 @@
         <entry key="..\:/Projects/Mehndi Deisgns/app/src/main/res/layout/item_categories.xml" value="0.3546875" />
         <entry key="..\:/Projects/Mehndi Deisgns/app/src/main/res/layout/item_images.xml" value="0.2" />
         <entry key="..\:/Projects/Mehndi Deisgns/app/src/main/res/layout/loading_view.xml" value="0.1702127659574468" />
-        <entry key="..\:/Projects/Photo View/app/src/main/res/layout/activity_main.xml" value="0.3546875" />
+        <entry key="..\:/Projects/Photo View/app/src/main/res/drawable-hdpi/drawable.xml" value="0.2455" />
+        <entry key="..\:/Projects/Photo View/app/src/main/res/drawable-mdpi/drawable.xml" value="0.2455" />
+        <entry key="..\:/Projects/Photo View/app/src/main/res/drawable-v24/square_bg.xml" value="0.248" />
+        <entry key="..\:/Projects/Photo View/app/src/main/res/drawable-xhdpi/drawable.xml" value="0.2455" />
+        <entry key="..\:/Projects/Photo View/app/src/main/res/drawable-xxhdpi/drawable.xml" value="0.2455" />
+        <entry key="..\:/Projects/Photo View/app/src/main/res/drawable-xxxhdpi/drawable.xml" value="0.2455" />
+        <entry key="..\:/Projects/Photo View/app/src/main/res/drawable/ic_fullscreen.xml" value="0.1855" />
+        <entry key="..\:/Projects/Photo View/app/src/main/res/drawable/ic_wallpaper.xml" value="0.1845" />
+        <entry key="..\:/Projects/Photo View/app/src/main/res/drawable/popup_item_drawable.xml" value="0.248" />
+        <entry key="..\:/Projects/Photo View/app/src/main/res/drawable/swith_tracker.xml" value="0.248" />
+        <entry key="..\:/Projects/Photo View/app/src/main/res/drawable/swithc_thumb.xml" value="0.248" />
+        <entry key="..\:/Projects/Photo View/app/src/main/res/layout/activity_about.xml" value="0.2902949978623343" />
+        <entry key="..\:/Projects/Photo View/app/src/main/res/layout/activity_images_view.xml" value="0.1" />
+        <entry key="..\:/Projects/Photo View/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/Projects/Photo View/app/src/main/res/layout/activity_settings.xml" value="0.25" />
+        <entry key="..\:/Projects/Photo View/app/src/main/res/layout/activity_splash.xml" value="0.1" />
+        <entry key="..\:/Projects/Photo View/app/src/main/res/layout/empty_view.xml" value="0.21458333333333332" />
         <entry key="..\:/Projects/Photo View/app/src/main/res/layout/fragment_categories.xml" value="0.3546875" />
         <entry key="..\:/Projects/Photo View/app/src/main/res/layout/fragment_images.xml" value="0.3546875" />
+        <entry key="..\:/Projects/Photo View/app/src/main/res/layout/gif_loading.xml" value="0.21458333333333332" />
+        <entry key="..\:/Projects/Photo View/app/src/main/res/layout/item_categories.xml" value="0.17249240121580547" />
         <entry key="..\:/Projects/Photo View/app/src/main/res/layout/item_images.xml" value="0.3546875" />
+        <entry key="..\:/Projects/Photo View/app/src/main/res/layout/loading_view.xml" value="0.21458333333333332" />
+        <entry key="..\:/Projects/Photo View/app/src/main/res/layout/native_ad_layout.xml" value="0.262890625" />
+        <entry key="..\:/Projects/Photo View/app/src/main/res/layout/toast_view.xml" value="0.21458333333333332" />
+        <entry key="..\:/Projects/Photo View/app/src/main/res/layout/update_dialog_layout.xml" value="0.33" />
         <entry key="..\:/Projects/Photo View/app/src/main/res/menu/image_menu.xml" value="0.3546875" />
+        <entry key="..\:/Projects/Photo View/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1855" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="jbr-17" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.1" />
+      </ProjectState>
+    </option>
   </component>
 </project>

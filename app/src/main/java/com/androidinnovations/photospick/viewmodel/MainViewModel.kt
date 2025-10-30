@@ -1,10 +1,11 @@
-package com.androidinnovations.photosview.viewmodel
+package com.androidinnovations.photospick.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.androidinnovations.photosview.InitApp
-import com.androidinnovations.photosview.model.ImagesModel
-import com.androidinnovations.photosview.retrofit.MainRepository
+import com.androidinnovations.photospick.InitApp
+import com.androidinnovations.photospick.model.ImagesModel
+import com.androidinnovations.photospick.retrofit.MainRepository
+
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -27,6 +28,7 @@ class MainViewModel constructor(private val repository: MainRepository)  : ViewM
         paramsMap["page"] = page.toString()
         paramsMap["category"] = category
         paramsMap["orientation"] = "horizontal"
+        paramsMap["safesearch"] = "true"
 
         val response = repository.getAllPictures(paramsMap)
         response.enqueue(object : Callback<ImagesModel> {

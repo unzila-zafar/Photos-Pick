@@ -2,13 +2,22 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/download"
-        android:title="Download"
-        android:icon="@drawable/ic_download_circle"/>
+        android:id="@+id/english"
+        android:title="English"
+        android:checkable="true"/>
 
     <item
-        android:id="@+id/set_wallpaper"
-        android:title="Set as Wallpaper"
-        android:icon="@drawable/ic_wallpaper"/>
+        android:id="@+id/urdu"
+        android:title="Urdu"
+        android:checkable="true"/>
+
+    <item
+        android:id="@+id/arabic"
+        android:title="Arabic"
+        android:checkable="true"/>
+    <item
+        android:id="@+id/german"
+        android:title="German"
+        android:checkable="true"/>
 
 </menu>

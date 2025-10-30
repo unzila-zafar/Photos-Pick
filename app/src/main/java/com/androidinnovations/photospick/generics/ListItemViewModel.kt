@@ -1,4 +1,4 @@
-package com.ozoneddigital.adamJee.generics
+package com.androidinnovations.photospick.generics
 
 import android.text.SpannableString
 import androidx.annotation.LayoutRes
