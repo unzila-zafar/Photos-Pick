@@ -13,3 +13,14 @@
 .externalNativeBuild
 .cxx
 local.properties
+/.idea/AndroidProjectSystem.xml
+/.idea/deploymentTargetSelector.xml
+/.idea/deviceManager.xml
+/.idea/migrations.xml
+/app/release/photos_pick v1.3.aab
+/app/release/photos_pickv1.1.aab
+/app/release/photos_pickv1.2.1.aab
+/app/release/photos_pickv1.2.2.aab
+/app/release/photos_pickv1.2.aab
+/app/release/photos_pickv1.aab
+/.idea/runConfigurations.xml
