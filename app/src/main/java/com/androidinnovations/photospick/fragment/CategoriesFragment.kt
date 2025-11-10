@@ -40,17 +40,6 @@ class CategoriesFragment: Fragment() {
         viewOfLayout = DataBindingUtil.inflate(inflater, R.layout.fragment_categories, container,false)
         (requireActivity() as MainActivity).changeTopBarText(requireActivity().getString(R.string.categories))
         (requireActivity() as MainActivity).showTopView(true)
-        loadInterstetialAds()
-
-        // Show the ad after 5 seconds (5000 milliseconds)
-        Handler(Looper.getMainLooper()).postDelayed({
-            if (mInterstitialAd != null) {
-                mInterstitialAd?.show(requireActivity())
-            } else {
-                Log.d("Ad", "Interstitial ad not ready yet.")
-            }
-        }, 5000)
-
 
         initRecycler()
         loadRecyclerData() // show categories
@@ -122,56 +111,4 @@ class CategoriesFragment: Fragment() {
         categoriesAdapter.addAll(listData)
 
     }
-
-    private fun loadInterstetialAds() {
-        var adRequest = AdRequest.Builder().build()
-        InterstitialAd.load(
-            requireContext(),
-            requireContext().getString(R.string.interstetialAd_key),
-            adRequest,
-            object : InterstitialAdLoadCallback() {
-                override fun onAdFailedToLoad(adError: LoadAdError) {
-                    adError.toString().let { Log.d("interstetialAds", it) }
-                    mInterstitialAd = null
-                }
-
-                override fun onAdLoaded(interstitialAd: InterstitialAd) {
-                    Log.d("interstetialAds", "Ad was loaded.")
-                    mInterstitialAd = interstitialAd
-                }
-            })
-
-
-        mInterstitialAd?.fullScreenContentCallback = object : FullScreenContentCallback() {
-            override fun onAdClicked() {
-                // Called when a click is recorded for an ad.
-
-
-                Log.d("Ads", "Ad was clicked.")
-            }
-
-            override fun onAdDismissedFullScreenContent() {
-                // Called when ad is dismissed.
-                Log.d("Ads", "Ad dismissed fullscreen content.")
-                mInterstitialAd = null
-            }
-
-
-            override fun onAdImpression() {
-                // Called when an impression is recorded for an ad.
-                Log.d("Ads", "Ad recorded an impression.")
-            }
-
-            override fun onAdShowedFullScreenContent() {
-                // Called when ad is shown.
-                Log.d("Ads", "Ad showed fullscreen content.")
-                mInterstitialAd = null
-
-            }
-        }
-    }
-
-
-
-
 }

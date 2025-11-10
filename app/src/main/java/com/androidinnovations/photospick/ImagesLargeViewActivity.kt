@@ -60,6 +60,13 @@ class ImagesLargeViewActivity : AppCompatActivity() {
         loadInterstetialAds()
         loadBannerAd()
 
+        Handler(Looper.getMainLooper()).postDelayed({
+            if (mInterstitialAd != null) {
+                mInterstitialAd?.show(this@ImagesLargeViewActivity)
+            } else {
+                Log.d("Ad", "Interstitial ad not ready yet.")
+            }
+        }, 15000)
 
         checkPermission()
         Glide.with(this)

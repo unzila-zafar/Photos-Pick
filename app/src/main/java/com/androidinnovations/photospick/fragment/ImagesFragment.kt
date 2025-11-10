@@ -3,6 +3,9 @@ package com.androidinnovations.photospick.fragment
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,7 +25,11 @@ import com.androidinnovations.photospick.util.Util.Companion.openLargeScreenView
 import com.androidinnovations.photospick.util.Util.Companion.showProgressDialog
 import com.androidinnovations.photosview.R
 import com.androidinnovations.photosview.databinding.FragmentImagesBinding
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.FullScreenContentCallback
+import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.interstitial.InterstitialAd
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import java.util.Locale
 
 class ImagesFragment : Fragment() {
@@ -183,6 +190,4 @@ class ImagesFragment : Fragment() {
         running = false
         mInterstitialAd = null
     }
-
-
 }

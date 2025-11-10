@@ -15,8 +15,6 @@ class MainViewModel constructor(private val repository: MainRepository)  : ViewM
 
     val imagesList = MutableLiveData<ImagesModel>()
     val errorMessage = MutableLiveData<String>()
-
-
     fun getAllPictures(page: Int, category: String, clickCallback: ((List<ImagesModel.Hits>) -> Unit)? = null)
     {
 
@@ -33,11 +31,13 @@ class MainViewModel constructor(private val repository: MainRepository)  : ViewM
         val response = repository.getAllPictures(paramsMap)
         response.enqueue(object : Callback<ImagesModel> {
             override fun onResponse(call: Call<ImagesModel>, response: Response<ImagesModel>) {
-                imagesList.postValue(response.body())
-                response.body()?.hits?.let {
-                    clickCallback?.invoke(response.body()?.hits!!)
-                }
+                if(response.body() != null) {
+                    imagesList.postValue(response.body())
+                    response.body()?.hits?.let {
+                        clickCallback?.invoke(response.body()?.hits!!)
+                    }
 
+                }
             }
 
             override fun onFailure(call: Call<ImagesModel>, t: Throwable) {

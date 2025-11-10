@@ -79,8 +79,6 @@ class MainActivity : AppCompatActivity() {
 
         loadNativeAds()
         loadBannerAd()
-        loadInterstetialAds()
-
 
         changeFragment(CategoriesFragment(), false)
 
@@ -157,55 +155,6 @@ class MainActivity : AppCompatActivity() {
 
         val adRequest = AdRequest.Builder().build()
         mAdView.loadAd(adRequest)
-    }
-
-
-    private fun loadInterstetialAds() {
-        var adRequest = AdRequest.Builder().build()
-        InterstitialAd.load(
-            this,
-            getString(R.string.interstetialAd_key),
-            adRequest,
-            object : InterstitialAdLoadCallback() {
-                override fun onAdFailedToLoad(adError: LoadAdError) {
-                    adError.toString()?.let { Log.d("interstetialAds", it) }
-                    mInterstitialAd = null
-                }
-
-                override fun onAdLoaded(interstitialAd: InterstitialAd) {
-                    Log.d("interstetialAds", "Ad was loaded.")
-                    mInterstitialAd = interstitialAd
-                }
-            })
-
-
-        mInterstitialAd?.fullScreenContentCallback = object : FullScreenContentCallback() {
-            override fun onAdClicked() {
-                // Called when a click is recorded for an ad.
-
-
-                Log.d("Ads", "Ad was clicked.")
-            }
-
-            override fun onAdDismissedFullScreenContent() {
-                // Called when ad is dismissed.
-                Log.d("Ads", "Ad dismissed fullscreen content.")
-                mInterstitialAd = null
-            }
-
-
-            override fun onAdImpression() {
-                // Called when an impression is recorded for an ad.
-                Log.d("Ads", "Ad recorded an impression.")
-            }
-
-            override fun onAdShowedFullScreenContent() {
-                // Called when ad is shown.
-                Log.d("Ads", "Ad showed fullscreen content.")
-                mInterstitialAd = null
-
-            }
-        }
     }
 
     lateinit var adLoader: AdLoader

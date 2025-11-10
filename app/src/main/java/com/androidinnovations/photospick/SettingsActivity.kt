@@ -26,6 +26,7 @@ import com.pixplicity.easyprefs.library.Prefs
 import java.util.*
 import androidx.core.graphics.toColorInt
 import com.androidinnovations.photosview.BuildConfig
+
 class SettingsActivity : AppCompatActivity() {
 
     private var viewOfLayout: ActivitySettingsBinding? = null
@@ -51,14 +52,12 @@ class SettingsActivity : AppCompatActivity() {
         loadInterstetialAds()
 
         viewOfLayout?.settingLanguageBtn!!.setOnClickListener {
-            // Show the ad after 5 seconds (5000 milliseconds)
-            Handler(Looper.getMainLooper()).postDelayed({
-                if (mInterstitialAd != null) {
-                    mInterstitialAd?.show(this@SettingsActivity)
-                } else {
-                    Log.d("Ad", "Interstitial ad not ready yet.")
-                }
-            }, 5000)
+            // Show the ad
+            if (mInterstitialAd != null) {
+                mInterstitialAd?.show(this@SettingsActivity)
+            } else {
+                Log.d("Ad", "Interstitial ad not ready yet.")
+            }
 
             showPopupMenu(viewOfLayout?.settingLanguageBtn!!)
         }
@@ -73,7 +72,7 @@ class SettingsActivity : AppCompatActivity() {
         }
 
         viewOfLayout?.settingShareBtn!!.setOnClickListener {
-            
+
             // Show the ad after 5 seconds (5000 milliseconds)
             Handler(Looper.getMainLooper()).postDelayed({
                 if (mInterstitialAd != null) {
@@ -111,10 +110,8 @@ class SettingsActivity : AppCompatActivity() {
         PopupMenu(view.context, view).apply {
             menuInflater.inflate(R.menu.image_menu, menu)
             setOnMenuItemClickListener { item ->
-                when(item.title)
-                {
-                    "English" ->
-                    {
+                when (item.title) {
+                    "English" -> {
                         val languageToLoad = "en" // your language
 
                         val locale = Locale(languageToLoad)
@@ -133,8 +130,8 @@ class SettingsActivity : AppCompatActivity() {
                         finish()
 
                     }
-                    "Arabic" ->
-                    {
+
+                    "Arabic" -> {
                         val languageToLoad = "ar" // your language
 
                         val locale = Locale(languageToLoad)
@@ -152,8 +149,8 @@ class SettingsActivity : AppCompatActivity() {
                         startActivity(refresh)
                         finish()
                     }
-                    "Urdu" ->
-                    {
+
+                    "Urdu" -> {
                         val languageToLoad = "ur" // your language
 
                         val locale = Locale(languageToLoad)
@@ -171,8 +168,8 @@ class SettingsActivity : AppCompatActivity() {
                         startActivity(refresh)
                         finish()
                     }
-                    "German" ->
-                    {
+
+                    "German" -> {
                         val languageToLoad = "gmh" // your language
 
                         val locale = Locale(languageToLoad)
@@ -195,7 +192,6 @@ class SettingsActivity : AppCompatActivity() {
             }
         }.show()
     }
-
 
 
     private fun loadBannerAd() {
