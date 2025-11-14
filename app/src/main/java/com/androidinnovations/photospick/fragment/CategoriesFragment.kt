@@ -15,7 +15,7 @@ import com.androidinnovations.photosview.MainActivity
 import com.androidinnovations.photosview.R
 import com.androidinnovations.photosview.databinding.FragmentCategoriesBinding
 import com.androidinnovations.photosview.model.CategoriesModel
-import com.androidinnovations.photosview.util.GridSpacingItemDecoration
+import com.androidinnovations.photospick.util.GridSpacingItemDecoration
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.FullScreenContentCallback
 import com.google.android.gms.ads.LoadAdError

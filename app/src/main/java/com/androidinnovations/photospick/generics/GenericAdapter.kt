@@ -766,7 +766,7 @@ class GenericAdapter<T : ListItemViewModel>(@LayoutRes val layoutId: Int) :
 
     /*Enabled Swipe to Delete Function*/
 
-    var swipeToDeleteCallback:  com.androidinnovations.photosview.util.SwipeToDeleteCallback? = null
+    var swipeToDeleteCallback:  com.androidinnovations.photospick.util.SwipeToDeleteCallback? = null
     var itemTouchhelper: ItemTouchHelper? = null
     var isAttached = false
     var swipeRecyclerView: RecyclerView? = null
@@ -779,7 +779,7 @@ class GenericAdapter<T : ListItemViewModel>(@LayoutRes val layoutId: Int) :
             IS_SWIPE_ENABLED = true
             swipeCallback = Callback
             swipeToDeleteCallback = object :
-                com.androidinnovations.photosview.util.SwipeToDeleteCallback(recyclerView!!.context, false) {
+                com.androidinnovations.photospick.util.SwipeToDeleteCallback(recyclerView!!.context, false) {
                 override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                     val position = viewHolder.adapterPosition
                     val item = data.get(position)
