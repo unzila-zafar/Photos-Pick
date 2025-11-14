@@ -1,4 +1,4 @@
-package com.androidinnovations.photosview.util;
+package com.androidinnovations.photospick.util;
 
 import android.graphics.Rect;
 import android.view.View;

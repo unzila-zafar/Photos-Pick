@@ -1,4 +1,4 @@
-package com.androidinnovations.photosview.util;
+package com.androidinnovations.photospick.util;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;

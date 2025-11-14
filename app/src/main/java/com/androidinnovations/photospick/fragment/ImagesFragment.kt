@@ -19,7 +19,7 @@ import com.androidinnovations.photosview.MainActivity
 import com.androidinnovations.photosview.R
 import com.androidinnovations.photosview.databinding.FragmentImagesBinding
 import com.androidinnovations.photosview.model.ImagesModel
-import com.androidinnovations.photosview.util.GridSpacingItemDecoration
+import com.androidinnovations.photospick.util.GridSpacingItemDecoration
 import com.androidinnovations.photosview.util.Util
 import com.androidinnovations.photosview.util.Util.Companion.showProgressDialog
 import com.androidinnovations.photosview.viewmodel.MainViewModel
